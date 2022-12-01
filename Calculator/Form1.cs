@@ -3,7 +3,7 @@ namespace Calculator
     public partial class Form1 : Form
     {
         double resultat = 0;
-        string operationPerforme = "";
+       // string operationPerforme = "";
         bool estOpertionPerforme = false;
         double premiernbr;
         string operation;
@@ -43,9 +43,15 @@ namespace Calculator
 
         private void btnaddition_Click(object sender, EventArgs e)
         {
-            premiernbr = Convert.ToDouble(textBoxAffichage.Text);
-            textBoxAffichage.Text = "0";
-            operation = "+";
+            try
+            {
+                premiernbr = Convert.ToDouble(textBoxAffichage.Text);
+                textBoxAffichage.Text = "0";
+                operation = "+";
+            }catch(Exception ex)
+            {
+                MessageBox.Show("erreur");
+            }
         }
 
         private void btnsoustraction_Click(object sender, EventArgs e)
@@ -72,6 +78,7 @@ namespace Calculator
 
         private void btnegale_Click(object sender, EventArgs e)
         {
+            try { 
             double deuxiemenbr;
             double resultat;
             deuxiemenbr = Convert.ToDouble(textBoxAffichage.Text);
@@ -105,6 +112,11 @@ namespace Calculator
                     textBoxAffichage.Text = Convert.ToString(resultat);
                     premiernbr = resultat;
                 }
+            }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("erreur");
             }
         }
         private void textBoxAffichage_TextChanged(object sender, EventArgs e)
